@@ -1,0 +1,16 @@
+@model Wedding
+<h1>Welcome, @ViewBag.FirstName!</h1>
+<div>
+     <a asp-controller="Home" asp-action="Index">Logout</a>
+    <a asp-controller="Home" asp-action="Success">Home</a>
+    <a asp-controller="Home" asp-action="CreateWedding" Method="POST">Make Wedding</a>
+</div>
+<h2>@Model.WedderOne & @Model.WedderTwo Wedding</h2>
+<p>Date: @Model.Date.ToString("yyyy-MM-dd")</p>
+<h3>Guests:</h3>
+<ul>
+ @foreach (var guests in Model.Guests)
+    {
+       <li>@guests.User.FirstName @guests.User.LastName</li>
+    }
+</ul>

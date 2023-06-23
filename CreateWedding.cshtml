@@ -1,0 +1,31 @@
+@model Wedding
+<h1>Welcome, @ViewBag.FirstName!</h1>
+<div>
+     <a asp-controller="Home" asp-action="Index">Logout</a>
+    <a asp-controller="Home" asp-action="Success">Home</a>
+    <a asp-controller="Home" asp-action="CreateWedding" Method="POST">Make Wedding</a>
+</div>
+<h1>Create a Wedding</h1>
+
+        <form asp-action="SaveWedding"  asp-controller="Home" method="POST">
+    
+        <label asp-for="WedderOne">Wedder One:</label>
+        <input asp-for="WedderOne" >
+        <span asp-validation-for="WedderOne"></span>
+
+         <label asp-for="WedderTwo">Wedder Two:</label>
+        <input asp-for="WedderTwo" >
+        <span asp-validation-for="WedderTwo"></span>
+ 
+         <label asp-for="Date">Date:</label>
+        <input type="date" asp-for="Date" >
+        <span asp-validation-for="Date"></span>
+
+
+        <label asp-for="Address">Address</label>
+        <input asp-for="Address" >
+        <span asp-validation-for="Address"></span>
+ 
+
+        <button type="submit" class="btn btn-success">Create Wedding</button>
+        </form>

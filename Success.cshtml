@@ -1,0 +1,43 @@
+@model List<Wedding>
+
+<h1>Welcome, @ViewBag.FirstName!</h1>
+<div>
+     <a asp-controller="Home" asp-action="Index">Logout</a>
+    <a asp-controller="Home" asp-action="Success">Home</a>
+    <a asp-controller="Home" asp-action="CreateWedding" Method="POST">Make Wedding</a>
+</div>
+
+<h2>Weddings</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Wedding of</th>
+                <th>Date</th>
+                 <th>Number of Guests</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var wedding in Model)
+            {
+                <tr>
+                    @* --------------------------------------------------------------------Passing Wed ID  *@
+                     <td><a asp-controller="Home" asp-action="Guests" asp-route-weddingId="@wedding.WeddingId">@wedding.WedderOne & @wedding.WedderTwo</a></td>
+                   @* YES! Gets rid of time *@
+                <td>@wedding.Date.ToString("yyyy-MM-dd")</td>
+                 <td>@wedding.Guests.Count</td>
+                    <td>
+
+                        @* -----------------------------------------------------------------------------Passing WeddingId*@
+                        <form method="post" asp-controller="Home" asp-action="RSVP" asp-route-weddingId="@wedding.WeddingId">
+                            <button type="submit">RSVP</button>
+                            
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
